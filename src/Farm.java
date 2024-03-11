@@ -6,9 +6,9 @@ public class Farm {
     ArrayList<Flower> field = new ArrayList<>();
     private double sizeOfField = 0;
 
-    public void addAnimal(Animal animal){
+    public void addAnimal(Animal animal) throws Exception {
         if (barn.size() == 20){
-            System.out.println("You don't have enough room in the barn.");
+            throw new Exception("You don't have enough room in the barn.");
         } else {
             barn.add(animal);
         }
@@ -19,12 +19,12 @@ public class Farm {
         barn.remove(index);
     }
 
-    public void addFlower(Flower flower){
+    public void addFlower(Flower flower) throws Exception {
         if (sizeOfField < 100 && field.size() != 5){
             field.add(flower);
             sizeOfField += flower.getNeededArea();
         } else {
-            System.out.println("You don't have enough room in your field");
+            throw new Exception("You don't have enough room in your field");
         }
     }
 
@@ -32,5 +32,9 @@ public class Farm {
         System.out.println(field.toString());
         field.remove(index);
         sizeOfField -= field.get(index).getNeededArea();
+    }
+
+    public void buy(){
+
     }
 }
